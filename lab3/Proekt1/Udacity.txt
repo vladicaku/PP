@@ -1,0 +1,83 @@
+// Homework 1
+// Color to Greyscale Conversion
+
+//A common way to represent color images is known as RGBA - the color
+//is specified by how much Red, Green, and Blue is in it.
+//The 'A' stands for Alpha and is used for transparency; it will be
+//ignored in this homework.
+
+//Each channel Red, Blue, Green, and Alpha is represented by one byte.
+//Since we are using one byte for each color there are 256 different
+//possible values for each color.  This means we use 4 bytes per pixel.
+
+//Greyscale images are represented by a single intensity value per pixel
+//which is one byte in size.
+
+//To convert an image from color to grayscale one simple method is to
+//set the intensity to the average of the RGB channels.  But we will
+//use a more sophisticated method that takes into account how the eye 
+//perceives color and weights the channels unequally.
+
+//The eye responds most strongly to green followed by red and then blue.
+//The NTSC (National Television System Committee) recommends the following
+//formula for color to greyscale conversion:
+
+//I = .299f * R + .587f * G + .114f * B
+
+//Notice the trailing f's on the numbers which indicate that they are 
+//single precision floating point constants and not double precision
+//constants.
+
+//You should fill in the kernel as well as set the block and grid sizes
+//so that the entire image is processed.
+
+#include "reference_calc.cpp"
+#include "utils.h"
+#include <stdio.h>
+#include <iostream>
+using namespace std;
+
+__global__ void rgba_to_greyscale(const uchar4* const rgbaImage, unsigned char* const greyImage, int numRows, int numCols)
+{
+	int abs_x = blockIdx.x * blockDim.x + threadIdx.x;
+	int abs_y = blockIdx.y * blockDim.y + threadIdx.y;
+	int globalId;
+
+	if (abs_x <= numCols && abs_y <= numRows)
+	{
+		globalId = abs_x + abs_y * numCols;
+		greyImage[globalId] = .299f * rgbaImage[globalId].x + .587f * rgbaImage[globalId].y + .114f * rgbaImage[globalId].z;
+		//rgba_to_greyscale(rgbaImage, greyImage, numRows, numCols);
+	}
+
+	/*printf("[%d, %d] %d \n", blockIdx.x, blockIdx.y, i);/*
+	if (blockIdx.x * blockDim.x > numCols)
+	{
+	}
+	else if (blockIdx.y * blockDim.y > numRows)
+	{
+		
+	}
+	else 
+	{
+		int threadId = threadIdx.x + threadIdx.y * blockDim.x;
+		int qusi_blockId = blockIdx.y * numCols * blockDim.y + blockIdx.x * blockDim.x * blockDim.y;
+		int globalId = qusi_blockId + threadId;
+		greyImage[globalId] = .299f * rgbaImage[globalId].x + .587f * rgbaImage[globalId].y + .114f * rgbaImage[globalId].z;
+	}*/
+}
+
+void your_rgba_to_greyscale(const uchar4 * const h_rgbaImage, uchar4 * const d_rgbaImage,
+                            unsigned char* const d_greyImage, size_t numRows, size_t numCols)
+{
+  //You must fill in the correct sizes for the blockSize and gridSize
+  //currently only one block with one thread is being launched
+  const dim3 blockSize(20, 20, 1);  //TODO
+  const dim3 gridSize(30, 20, 1);  //TODO
+  cout << numCols << " x " << numRows << "\n";
+  cout << numCols/100 << " x " << numRows/10 << "\n";
+  
+  rgba_to_greyscale<<<gridSize, blockSize>>>(d_rgbaImage, d_greyImage, numRows, numCols);
+  
+  cudaDeviceSynchronize(); checkCudaErrors(cudaGetLastError());
+}
