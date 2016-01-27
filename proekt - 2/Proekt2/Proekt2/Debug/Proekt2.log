@@ -1,0 +1,31 @@
+﻿Build started 1/27/2016 5:25:45 AM.
+     1>Project "D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Proekt2\Proekt2.vcxproj" on node 2 (Build target(s)).
+     1>AddCudaCompileDeps:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN32 /D_DEBUG /D_CONSOLE /D_MBCS /I"D:\Program Files\NVIDIA\Tookit\include" /I"D:\Program Files\NVIDIA\Tookit\bin" /I"D:\Program Files\NVIDIA\Tookit\include" /I. /FIcuda_runtime.h /c "D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Proekt2\kernel.cu" 
+       CudaBuild:
+         Compiling CUDA source file kernel.cu...
+         cmd.exe /C "C:\Users\User\AppData\Local\Temp\tmpf917a666d6b7433b8deefe9e229daf39.cmd"
+         "D:\Program Files\NVIDIA\Tookit\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"D:\Program Files\NVIDIA\Tookit\include" -I"D:\Program Files\NVIDIA\Tookit\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Proekt2\kernel.cu"
+         
+         D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Proekt2>"D:\Program Files\NVIDIA\Tookit\bin\nvcc.exe" -gencode=arch=compute_20,code=\"sm_20,compute_20\" --use-local-env --cl-version 2012 -ccbin "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"  -I"D:\Program Files\NVIDIA\Tookit\include" -I"D:\Program Files\NVIDIA\Tookit\include"  -G   --keep-dir Debug -maxrregcount=0  --machine 32 --compile -cudart static  -g   -DWIN32 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Zi /RTC1 /MDd  " -o Debug\kernel.cu.obj "D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Proekt2\kernel.cu" 
+     1>D:/Finki/sm6/pp/domasno/proekt - 2/Proekt2/Proekt2/kernel.cu(85): warning : variable "counter" was declared but never referenced
+     1>D:/Finki/sm6/pp/domasno/proekt - 2/Proekt2/Proekt2/kernel.cu(152): warning : variable "counter" was declared but never referenced
+     1>D:/Finki/sm6/pp/domasno/proekt - 2/Proekt2/Proekt2/kernel.cu(85): warning : variable "counter" was declared but never referenced
+     1>D:/Finki/sm6/pp/domasno/proekt - 2/Proekt2/Proekt2/kernel.cu(152): warning : variable "counter" was declared but never referenced
+         kernel.cu
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Debug\Proekt2.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\Program Files\NVIDIA\Tookit\lib\Win32" cudart.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Debug\Proekt2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Debug\Proekt2.lib" /MACHINE:X86 Debug\kernel.cu.obj
+         Proekt2.vcxproj -> D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Debug\Proekt2.exe
+       PostBuildEvent:
+         echo copy "D:\Program Files\NVIDIA\Tookit\bin\cudart*.dll" "D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Debug\"
+         copy "D:\Program Files\NVIDIA\Tookit\bin\cudart*.dll" "D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Debug\"
+         :VCEnd
+         copy "D:\Program Files\NVIDIA\Tookit\bin\cudart*.dll" "D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Debug\"
+         D:\Program Files\NVIDIA\Tookit\bin\cudart32_65.dll
+         D:\Program Files\NVIDIA\Tookit\bin\cudart64_65.dll
+                 2 file(s) copied.
+     1>Done Building Project "D:\Finki\sm6\pp\domasno\proekt - 2\Proekt2\Proekt2\Proekt2.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:06.84
